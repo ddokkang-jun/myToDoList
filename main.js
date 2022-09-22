@@ -62,7 +62,7 @@ function render() {
           <button onclick="toggle('${inputValueArray[i].id}')">
             <i class="fas fa-check"></i>
           </button>
-          <button>
+          <button onclick="deleteTask('${inputValueArray[i].id}')">
             <i class="fas fa-trash-alt"></i>
           </button>
         </div>
@@ -76,14 +76,13 @@ function render() {
           <button onclick="toggle('${inputValueArray[i].id}')">
             <i class="fas fa-check"></i>
           </button>
-          <button>
+          <button onclick="deleteTask('${inputValueArray[i].id}')">
             <i class="fas fa-trash-alt"></i>
           </button>
         </div>
       </div>
     `;
-    }
-    
+    }    
   }
 
   document.querySelector(".task-board").innerHTML = taskBoardHTML;
@@ -99,11 +98,17 @@ function toggle(id){
   render();
 }
 
+// delete task
+function deleteTask(id){
+  let index = inputValueArray.findIndex((item)=> item.id == id);
+  inputValueArray.splice(index, 1);
+  render();
+}
+
 // task 객체에 random ID 주는 함수
 function randomId() {
   return '_' + Math.random().toString(36).replace(/\./g,"");
 }
-
 
 
 // 나중에 다 하고 navar indicator 만들때 쓸 코드 주소
