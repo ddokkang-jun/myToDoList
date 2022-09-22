@@ -44,3 +44,6 @@ body {
   border-top: 0;
   padding: 1em;
 }
+.underline {
+  text-decoration: line-through;
+}
