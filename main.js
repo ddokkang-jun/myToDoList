@@ -7,15 +7,27 @@
 // 둘째날 :
 // 체크버튼을 누르면 할일이 끝난것으로 간주하고 밑줄이간다. => 각각의 task들에 랜덤 id를 주고, 체크버튼을 클릭하면 해당되는 id를 찾아 CSS style을 바꾸어주자
 // 삭제버튼을 클릭하면 할일이 리스트에서 삭제된다.
-// 끝난 할일은 되돌리기 버튼을 클릭하면 다시 되돌릴 수 있다.
+
+// 셋째날
 // 탭을 이용해 아이템들을 상태별로 나누어서 볼 수 있다.
+
 // 모바일 버전에서도 확인할 수 있는 반응형 웹이다
 
 let input = document.querySelector(".task-input");
 let addBtn = document.querySelector(".add-button");
-let inputValueArray = [];
+let tabs = document.querySelectorAll(".task-tab div");
+let underLine = document.querySelector("#horizontal-underline");
+let taskList = [];
+let mode = 'all';
+let filteredList = [];
 input.focus();
 
+//각각의 탭에 클릭이벤트를 달아줌
+for(let i = 1; i < tabs.length; i++){
+  tabs[i].addEventListener("click", (e) => {
+    tabFiltering(e);
+  })
+}
 
 // input에 할일을 입력하고 키보드 enter를 눌렀을때 이벤트 
 input.addEventListener("keypress", (e) => {
@@ -43,7 +55,7 @@ function addTask(){
     input.focus();
     return;
   }else {
-    inputValueArray.push(task);
+    taskList.push(task);
     render();
     input.value = '';
     input.focus();
@@ -53,16 +65,23 @@ function addTask(){
 // render() : 브라우저 화면에 task보여주는 함수
 function render() {
   let taskBoardHTML = '';
-  for(let i = 0; i < inputValueArray.length; i++){
-    if(inputValueArray[i].isItDone == false){
+  let list = [];
+  if(mode == 'all'){
+    list = taskList;
+  }else if(mode == "doing" || mode == "done"){
+    list = filteredList;
+  }
+
+  for(let i = 0; i < list.length; i++){
+    if(list[i].isItDone == false){
       taskBoardHTML += `
       <div class="task">
-        <div>${inputValueArray[i].taskValue}</div>
+        <div>${list[i].taskValue}</div>
         <div>
-          <button onclick="toggle('${inputValueArray[i].id}')">
+          <button onclick="toggle('${list[i].id}')">
             <i class="fas fa-check"></i>
           </button>
-          <button onclick="deleteTask('${inputValueArray[i].id}')">
+          <button onclick="deleteTask('${list[i].id}')">
             <i class="fas fa-trash-alt"></i>
           </button>
         </div>
@@ -71,12 +90,12 @@ function render() {
     }else {
       taskBoardHTML += `
       <div class="task">
-        <div class="underline">${inputValueArray[i].taskValue}</div>
+        <div class="underline">${list[i].taskValue}</div>
         <div>
-          <button onclick="toggle('${inputValueArray[i].id}')">
+          <button onclick="toggle('${list[i].id}')">
             <i class="fas fa-check"></i>
           </button>
-          <button onclick="deleteTask('${inputValueArray[i].id}')">
+          <button onclick="deleteTask('${list[i].id}')">
             <i class="fas fa-trash-alt"></i>
           </button>
         </div>
@@ -90,7 +109,7 @@ function render() {
 
 // 체크버튼이 클릭된 해당 객체를 찾아서 값을 바꿔줌. 그리고 다시 렌더함수 호출
 function toggle(id){
-  inputValueArray.filter((item) => {
+  taskList.filter((item) => {
     if(item.id == id){
       return item.isItDone = !item.isItDone;
     }
@@ -100,9 +119,39 @@ function toggle(id){
 
 // delete task
 function deleteTask(id){
-  let index = inputValueArray.findIndex((item)=> item.id == id);
-  inputValueArray.splice(index, 1);
+  let index = taskList.findIndex((item)=> item.id == id);
+  taskList.splice(index, 1);
   render();
+}
+
+// tab을 클릭하면 필터링하는 함수
+function tabFiltering(e){
+  if (e) {
+    mode = e.target.id;
+    underLine.style.width = e.target.offsetWidth + "px";
+    underLine.style.left = e.target.offsetLeft + "px";
+    underLine.style.top =
+      e.target.offsetTop + (e.target.offsetHeight - 4) + "px";
+  }
+  if(mode == 'all'){
+    render();
+  }else if(mode == "doing"){
+    filteredList = [];
+    for(let i = 0; i < taskList.length; i++){
+      if(taskList[i].isItDone == false){
+        filteredList.push(taskList[i]);
+      }
+    }
+    render();
+  }else if(mode == "done"){
+    filteredList = [];
+    for(let i = 0; i < taskList.length; i++){
+      if(taskList[i].isItDone == true){
+        filteredList.push(taskList[i]);
+      }
+    }
+    render();
+  }
 }
 
 // task 객체에 random ID 주는 함수

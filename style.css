@@ -25,6 +25,7 @@ body {
   position: relative;
 }
 .task-tab div{
+  cursor: pointer;
   padding: 1em;
 }
 #horizontal-underline{
@@ -34,7 +35,7 @@ body {
   width: 50px;
   top: 53px;
   left: 0;
-  transition: 0.5s;
+  transition: 0.3s;
   padding: 0;
 }
 .task {
