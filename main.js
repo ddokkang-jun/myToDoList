@@ -158,7 +158,3 @@ function tabFiltering(e){
 function randomId() {
   return '_' + Math.random().toString(36).replace(/\./g,"");
 }
-
-
-// 나중에 다 하고 navar indicator 만들때 쓸 코드 주소
-//https://hackmd.io/@oW_dDxdsRoSpl0M64Tfg2g/SyujQp2Lt

@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <!-- bootstrap CDN CSS, script -->
-  <script src="https://kit.fontawesome.com/62638dc3e4.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/62638dc3e4.js" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="main.js" defer></script>
+  <script src="clock.js" defer></script>
+  <script src="weather.js" defer></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,6 +22,12 @@
       <button class="add-button">
         <i class="fas fa-plus"></i>
       </button>
+      <div class="weather">
+
+      </div>
+      <div class="clock">
+        <h1>00:00:00</h1>
+      </div>
     </section>
     <section class="task-area">
       <div class="task-tab">
