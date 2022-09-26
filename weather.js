@@ -9,8 +9,9 @@ async function getWeater(lat, log){
   
   let place = data.name;
   let temperature = data.main.temp;
+  let iconId = data.weather[0].icon;
 
-  let weatherHTML = `<span>${place} ${temperature} ℃</span>`;
+  let weatherHTML = `<span>${place}</span><img src="images/${iconId}.png"/><span>${temperature} ℃</span>`;
   weather.innerHTML = weatherHTML;
 }
 
