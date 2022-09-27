@@ -16,25 +16,40 @@
 </head>
 <body>
   <div class="container">
-    <h1>오늘 할일</h1>
-    <section class="input-area">
-      <input type="text" class="task-input">
-      <button class="add-button">
-        <i class="fas fa-plus"></i>
-      </button>
-      <div class="weather">
-        <!-- display weather area-->
+    <div class="info">
+      <div>
+        <h1>오늘 할일</h1>
       </div>
-      <div class="clock">
-        <h1>00:00:00</h1>
+      <div class="right-side-info">
+        <div>
+          <div class="weather">
+            <!-- display weather area-->
+          </div>
+        </div>
+        <div>
+          <div class="clock">
+            <h1>00:00:00</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="input-area">
+      <div>
+        <input type="text" class="task-input">
+        <label for="task-label">
+          <span>오늘의 할일은?</span>
+        </label>
+        <button class="add-button">
+          <i class="fas fa-plus"></i>
+        </button>
       </div>
     </section>
     <section class="task-area">
       <div class="task-tab">
         <div id="horizontal-underline"></div>
-        <div id="all">All</div>
-        <div id="doing">To do</div>
-        <div id="done">done</div>
+        <div id="all">전체목록</div>
+        <div id="doing">할 일</div>
+        <div id="done">끝낸 일</div>
       </div>
       <div class="task-board">
         

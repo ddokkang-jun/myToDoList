@@ -76,8 +76,8 @@ function render() {
     if(list[i].isItDone == false){
       taskBoardHTML += `
       <div class="task">
-        <div>${list[i].taskValue}</div>
-        <div>
+        <div class="taskValue">${list[i].taskValue}</div>
+        <div class="task-btn">
           <button onclick="toggle('${list[i].id}')">
             <i class="fas fa-check"></i>
           </button>
@@ -91,7 +91,7 @@ function render() {
       taskBoardHTML += `
       <div class="task">
         <div class="underline">${list[i].taskValue}</div>
-        <div>
+        <div class="task-btn">
           <button onclick="toggle('${list[i].id}')">
             <i class="fas fa-check"></i>
           </button>

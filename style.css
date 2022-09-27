@@ -6,6 +6,13 @@
   margin: 0;
   padding: 0;
 }
+button {
+  outline: none;
+  border: none;
+}
+h1 {
+  margin: 0;
+}
 body {
   background-image: url(images/office-620817_1920.jpg);
   background-repeat: no-repeat;
@@ -13,11 +20,72 @@ body {
 }
 .container {
   background-color: #ffff;
-  height: 100vh;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  max-width: 800px;
+  height: 100%;
+  min-height: 100vh;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border: 10px solid hotpink;
+  padding: 1rem;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.info h1 {
+  margin-bottom: 30px;
+}
+.right-side-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clock {
+  margin-top: 20px;
+}
+.weather img {
+  width: 20%;
+  height: 20%;
+}
+.input-area {
+  position: relative;
+  padding: 4px;
+  margin: 10px 0;
 }
 .task-input {
-  padding: 4px;
+  padding: 3px;
+  width: 80%;
+  height: 100%;
+  border: 1px solid hotpink;
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+}
+.task-input:focus {
+  outline: none;
+  border-bottom: 3px solid hotpink;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  transition: 0.5s;
+  padding-top: 35px;
+}
+.task-input + label > span {
+  font-weight: 300;
+  margin: 0;
+  position: absolute;
+  color: #8f8f8f;
+  font-size: 14px;
+  top: 10px;
+  left: 10px;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+.add-button {
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  color: hotpink;
+  background-color: #fff;
 }
 .task-tab {
   display: flex;
@@ -30,10 +98,10 @@ body {
 }
 #horizontal-underline{
   height: 4px;
-  background-color: pink;
+  background-color: hotpink;
   position: absolute;
-  width: 50px;
-  top: 53px;
+  width: 100px;
+  top: 54px;
   left: 0;
   transition: 0.3s;
   padding: 0;
@@ -45,6 +113,26 @@ body {
   border-top: 0;
   padding: 1em;
 }
+.task div {
+  cursor: pointer;
+}
+.task-btn button {
+  margin: 0 20px;
+  font-size: 18px;
+  background: none;
+}
+.fa-check {
+  color: greenyellow;
+}
+.fa-trash-alt {
+  color: crimson;
+}
 .underline {
   text-decoration: line-through;
+}
+@media screen and (max-width: 768px){
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
 }

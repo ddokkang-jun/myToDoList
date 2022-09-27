@@ -8,7 +8,8 @@ async function getWeater(lat, log){
   let data = await fetch(url).then((response) => response.json());
   
   let place = data.name;
-  let temperature = data.main.temp;
+  let temperatureData = data.main.temp;
+  let temperature = Math.floor(temperatureData);
   let iconId = data.weather[0].icon;
 
   let weatherHTML = `<span>${place}</span><img src="images/${iconId}.png"/><span>${temperature} ℃</span>`;
